@@ -4,19 +4,22 @@ public class Main {
     public static void main(String[] args) {
         SharedResource sharedResource=new SharedResource();
 
-//        Thread th1=new Thread(()->{
-//                    sharedResource.Producer();
-//                }
-//        );
-//        Thread th2=new Thread(()->{
-//            sharedResource.Producer();
-//        }
-//        );
+        Thread th3=new Thread(()->{
+                    sharedResource.Producer();
+                }
+        );
+        Thread th4=new Thread(()->{
+            sharedResource.Producer();
+        }
+        );
+
         SharedResource sharedResource2=new SharedResource();
         Thread th1=new Thread(sharedResource::Producer);
         Thread th2=new Thread(sharedResource2::Producer);
         th1.start();
         th2.start();
+        th3.start();
+        th4.start();
 
     }
 }
